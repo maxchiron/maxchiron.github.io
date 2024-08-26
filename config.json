@@ -2,5 +2,14 @@
     "title":"MaxChiron (汪周谦) Blog",
     "subTitle":"“ 神说要有光，光便有了。”",
     "avatarUrl":"https://avatars.githubusercontent.com/u/85681332",
-    "GMEEK_VERSION":"last"
+    "GMEEK_VERSION":"last",
+    "email":"meekdai@163.com",
+    "startSite":"08/26/2024",
+    "onePageListNum":15,
+    "singlePage":["link","about"],
+    "iconList":{"music":"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13Z"},
+    "exlink":{"music":"https://music.meekdai.com"},
+    "commentLabelColor":"#006b75",
+    "yearColorList":["#bc4c00", "#0969da", "#1f883d", "#A333D0"],
+    "themeMode":"manual"
 }
