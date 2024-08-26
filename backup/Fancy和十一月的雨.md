@@ -1,8 +1,6 @@
-`Gmeek-html<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1501575915&auto=1&height=66"></iframe>`
+`Gmeek-html<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=19183806&bvid=BV1eW411J7d8&cid=31288980&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>`
 
 > "我清楚地知道，我所付出的一切都将化作雨水，消失在她的回忆中。"
-
-![fancy](https://mmbiz.qpic.cn/mmbiz_jpg/tJbaG8xRAiakITwSklg9GzC42nFQjslOAgLPyX2Q9Zl9OqwPHJfUJ3VvByuxxc4hOMKYboku6eebXohSGlDqfWg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 ---
 
@@ -11,6 +9,9 @@
 一滴水珠落在我的睫毛上，将我从雨水的那股独特气味中抽离出来。Fancy从远处走过来，她那条黑色短裙的边缘在距离地面一米高的空中划过，裙摆与大腿内侧组成的夹角，像是某种时间变形器，将她朝我走来的每一帧画面定格在这11月份傍晚的每一滴雨水中。我站在原地看着她的身体，已然忘记了自己身处何处。
 
 不过，同样的情节每天都在发生，我和Fancy之间的差异也不仅仅是“能不能闻见雨水的味道”这一句话所能简单概括的。
+
+![legs](https://mmbiz.qpic.cn/mmbiz_jpg/tJbaG8xRAiakITwSklg9GzC42nFQjslOAgLPyX2Q9Zl9OqwPHJfUJ3VvByuxxc4hOMKYboku6eebXohSGlDqfWg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
 可是我仍然喜欢站在实验室楼下等她，喜欢看她朝我的方向走来，喜欢盯着那个迷人的夹角出神，直至她已站在离我只有10厘米的跟前，我的目光才向上移到她的脸庞。我仍然喜欢Fancy看我时的样子，她盯着我的双眼看，而我在看她左边眼睛的倒数第三根睫毛。那天她看着我的眼睛冲我笑，于是我决定把这一刻记在脑子里。能让我记在脑子里的事情不是很多，这算是其中之一。
 
 那天晚上在钟楼，Fancy用双手扶着我的脸，看着我的眼睛说喜欢我。月光照在钟楼的巨大钟摆上，又反射到她脸上。我突然觉得好笑，发现这世上的时间变形器有很多种，“Fancy大腿内侧的那个夹角”是其中一种，“被钟摆反射过的月光”是另一种。Fancy很疑惑，不知道我在笑什么。她当然不知道我在笑什么，我也不准备告诉她，因为被钟摆反射过的月光即刻便会消失，而那个奇妙的夹角也不可能脱离Fancy的身体而独立存在。
@@ -18,6 +19,7 @@
 可是爱会消失吗？我好像记得在一个雨天看见Fancy牵着别人的手向远处走去。我站在实验室楼下，雨水如平时那般打在身上。我心里觉得没什么大不了的，可是自那天开始，我就再没闻见过雨水的味道。
 
 ---
-END
 
----
+恭喜解锁成就： <b>时间变形器</b>
+
+![time-machine](https://mmbiz.qpic.cn/mmbiz_png/tJbaG8xRAiakITwSklg9GzC42nFQjslOA6SMg9wAhXBZg0Jng4YMo46t0L36Tswd7LM45KvYlgjaQ1AR0ruWNKw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
