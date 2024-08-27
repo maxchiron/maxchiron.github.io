@@ -13,5 +13,6 @@
     "yearColorList":["#bc4c00", "#0969da", "#1f883d", "#A333D0"],
     "themeMode":"manual",
     "script":"<script src='https://maxchiron.github.io/Gmeek-plugins/GmeekTOC.js'></script><script src='https://maxchiron.github.io/Gmeek-plugins/lightbox.js'></script>",
-    "allHead":"<script src='https://maxchiron.github.io/Gmeek-plugins/GmeekVercount.js'></script>"
+    "allHead":"<script src='https://maxchiron.github.io/Gmeek-plugins/GmeekVercount.js'></script>",
+    "urlMode": "issue"
 }
