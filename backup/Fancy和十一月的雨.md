@@ -1,4 +1,4 @@
-`Gmeek-html<audio controls><source src="https://maxchiron.github.io/Gmeek-files/issue2/Tomoko_Aran亜蘭知子-Midnight_Pretenders_Instrumental.m4a" type="audio/mp4"></audio>`
+`Gmeek-html<audio controls autoplay><source src="https://maxchiron.github.io/Gmeek-files/issue2/Tomoko_Aran亜蘭知子-Midnight_Pretenders_Instrumental.m4a" type="audio/mp4"></audio>`
 
 > "我清楚地知道，我所付出的一切都将化作雨水，消失在她的回忆中。"
 
