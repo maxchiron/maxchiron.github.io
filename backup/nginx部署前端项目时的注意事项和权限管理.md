@@ -18,7 +18,7 @@ server {
     internal;
   }
   location /api/ {
-    proxy_pass http://142.171.108.176:5001;  # 代理到新的后端服务器
+    proxy_pass http://ip:5001;  # 代理到新的后端服务器
     proxy_set_header Host $host;  # 设置 Host 头
     proxy_set_header X-Real-IP $remote_addr;  # 设置客户端真实 IP
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # 转发客户端 IP
