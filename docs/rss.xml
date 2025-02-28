@@ -1,5 +1,59 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>MaxChiron Blog</title><link>https://maxchiron.github.io</link><description>汪周谦还记得那年第一次读创世纪：神说要有光，光便有了。</description><copyright>MaxChiron Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/85681332</url><title>avatar</title><link>https://maxchiron.github.io</link></image><lastBuildDate>Thu, 20 Feb 2025 01:21:27 +0000</lastBuildDate><managingEditor>MaxChiron Blog</managingEditor><ttl>60</ttl><webMaster>MaxChiron Blog</webMaster><item><title>bash命令</title><link>https://maxchiron.github.io/post/13.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>MaxChiron Blog</title><link>https://maxchiron.github.io</link><description>汪周谦还记得那年第一次读创世纪：神说要有光，光便有了。</description><copyright>MaxChiron Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/85681332</url><title>avatar</title><link>https://maxchiron.github.io</link></image><lastBuildDate>Fri, 28 Feb 2025 02:24:27 +0000</lastBuildDate><managingEditor>MaxChiron Blog</managingEditor><ttl>60</ttl><webMaster>MaxChiron Blog</webMaster><item><title>笔记：marp vscode</title><link>https://maxchiron.github.io/post/14.html</link><description>## 创建双栏页
+
+声明：
+```html
+&lt;!-- two column style --&gt;
+&lt;style&gt;
+.container{
+  display: flex;
+}
+.col{
+  flex: 1;
+}
+&lt;/style&gt;
+```
+
+使用：
+```html
+&lt;div class='container'&gt;
+    &lt;div class='col'&gt;
+        Column 1 Content
+    &lt;/div&gt;
+    &lt;div class='col'&gt;
+        Column 2 Content
+    &lt;/div&gt;
+&lt;/div&gt;
+```
+
+## 超小字（脚注）
+
+```html
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span style='font-size: 15px;'&gt;超小字内容&lt;/span&gt;
+```
+
+## 上标（索引|引用）
+
+```html
+&lt;sup&gt;1&lt;/sup&gt;
+```
+
+## 内嵌mermaid
+
+```html
+&lt;!-- mermaid.js --&gt;
+&lt;script src='https://unpkg.com/mermaid@10.5.0/dist/mermaid.js'&gt;&lt;/script&gt;
+&lt;script&gt;mermaid.initialize({startOnLoad:true, theme:'forest'});&lt;/script&gt;
+
+&lt;pre class='mermaid'&gt;
+    %%{init: { 'theme': 'forest' }}%%
+    graph LR
+        A[输入问题] --&gt; B(( LLM ))
+        B --&gt; C[回答]
+        D[输入问题] --&gt; E(( R M ))
+        E --&gt; F[思考过程 + 回答]
+&lt;/pre&gt;
+```。</description><guid isPermaLink="true">https://maxchiron.github.io/post/14.html</guid><pubDate>Fri, 28 Feb 2025 02:24:05 +0000</pubDate></item><item><title>bash命令</title><link>https://maxchiron.github.io/post/13.html</link><description>
 &gt; 😀 都是跑通过的bash命令。</description><guid isPermaLink="true">https://maxchiron.github.io/post/13.html</guid><pubDate>Thu, 20 Feb 2025 01:20:50 +0000</pubDate></item><item><title>B站视频批量下载</title><link>https://maxchiron.github.io/post/12.html</link><description>
 &gt; [https://www.bilibili.com/opus/927702172755296257](https://www.bilibili.com/opus/927702172755296257)
 
