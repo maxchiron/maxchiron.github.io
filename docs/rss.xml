@@ -1,5 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>MaxChiron Blog</title><link>https://maxchiron.github.io</link><description>汪周谦还记得那年第一次读创世纪：神说要有光，光便有了。</description><copyright>MaxChiron Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/85681332</url><title>avatar</title><link>https://maxchiron.github.io</link></image><lastBuildDate>Fri, 28 Feb 2025 02:24:27 +0000</lastBuildDate><managingEditor>MaxChiron Blog</managingEditor><ttl>60</ttl><webMaster>MaxChiron Blog</webMaster><item><title>笔记：marp vscode</title><link>https://maxchiron.github.io/post/14.html</link><description>## 创建双栏页
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>MaxChiron Blog</title><link>https://maxchiron.github.io</link><description>汪周谦还记得那年第一次读创世纪：神说要有光，光便有了。</description><copyright>MaxChiron Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/85681332</url><title>avatar</title><link>https://maxchiron.github.io</link></image><lastBuildDate>Sat, 19 Apr 2025 00:53:48 +0000</lastBuildDate><managingEditor>MaxChiron Blog</managingEditor><ttl>60</ttl><webMaster>MaxChiron Blog</webMaster><item><title>配置frp内网穿透</title><link>https://maxchiron.github.io/post/15.html</link><description>## 下载frp
+
+https://github.com/fatedier/frp/releases
+
+## 防火墙放行
+
+&gt; 即便ufw未启用，iptables和nft仍有可能进行了拦截。</description><guid isPermaLink="true">https://maxchiron.github.io/post/15.html</guid><pubDate>Sat, 19 Apr 2025 00:50:28 +0000</pubDate></item><item><title>笔记：marp vscode</title><link>https://maxchiron.github.io/post/14.html</link><description>## 创建双栏页
 
 声明：
 ```html
