@@ -86,7 +86,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><blockquote>
-<p>😀 都是跑通过的bash命令。（虽然很想用fish，但是真的兼容性不如bash润啊。。。）</p>
+<p>😀 都是跑通过的bash命令。</p>
 </blockquote>
 <h2>目录下文件类型统计</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">find <span class="pl-c1">.</span> -type f <span class="pl-k">|</span> awk -F. <span class="pl-s"><span class="pl-pds">'</span>{if (NF==1) print "no_extension"; else print $NF}<span class="pl-pds">'</span></span> <span class="pl-k">|</span> sort <span class="pl-k">|</span> uniq -c <span class="pl-k">|</span> sort -nr <span class="pl-k">|</span> awk <span class="pl-s"><span class="pl-pds">'</span>{print $2, $1}<span class="pl-pds">'</span></span></pre></div>
@@ -108,7 +108,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <tr>
 <td>指定深度</td>
 <td>-L</td>
-<td>`tree . -L 3</td>
+<td><code class="notranslate">tree . -L 3 | wc -l</code></td>
 </tr>
 <tr>
 <td></td>
