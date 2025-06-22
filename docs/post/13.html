@@ -93,6 +93,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>yysy，awk真的很强大，至今还是没学会咋用。。。</p>
 <h2>类型文件数量统计</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">find <span class="pl-c1">.</span> -type f <span class="pl-cce">\(</span> -iname <span class="pl-s"><span class="pl-pds">"</span>*.png<span class="pl-pds">"</span></span> -o -iname <span class="pl-s"><span class="pl-pds">"</span>*.bmp<span class="pl-pds">"</span></span> -o -iname <span class="pl-s"><span class="pl-pds">"</span>*.tif<span class="pl-pds">"</span></span> -o -iname <span class="pl-s"><span class="pl-pds">"</span>*.tiff<span class="pl-pds">"</span></span> -o -iname <span class="pl-s"><span class="pl-pds">"</span>*.jpg<span class="pl-pds">"</span></span> -o -iname <span class="pl-s"><span class="pl-pds">"</span>*.jpeg<span class="pl-pds">"</span></span> -o -iname <span class="pl-s"><span class="pl-pds">"</span>*.gif<span class="pl-pds">"</span></span> -o -iname <span class="pl-s"><span class="pl-pds">"</span>*.webp<span class="pl-pds">"</span></span> <span class="pl-cce">\)</span> <span class="pl-k">|</span> wc -l</pre></div>
+<h2>条件拷贝，并保持目录结构</h2>
+<div class="highlight highlight-source-shell"><pre class="notranslate">find <span class="pl-k">&lt;</span>source_path<span class="pl-k">&gt;</span> -type f -name <span class="pl-s"><span class="pl-pds">'</span>*-Color-*<span class="pl-pds">'</span></span> -exec cp --parents -t <span class="pl-k">&lt;</span>target_path<span class="pl-k">&gt;</span> {} +</pre></div>
 <h2>tree</h2>
 <markdown-accessiblity-table><table role="table">
 <thead>

@@ -16,6 +16,12 @@ yysy，awk真的很强大，至今还是没学会咋用。。。
 find . -type f \( -iname "*.png" -o -iname "*.bmp" -o -iname "*.tif" -o -iname "*.tiff" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" \) | wc -l
 ```
 
+## 条件拷贝，并保持目录结构
+
+```bash
+find <source_path> -type f -name '*-Color-*' -exec cp --parents -t <target_path> {} +
+```
+
 ## tree
 
 | **功能** | **arg** | **举例** |
