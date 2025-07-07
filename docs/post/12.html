@@ -88,22 +88,22 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </blockquote>
 <h2>Step 1</h2>
 <p>进入待下载页面。例如：</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/85f93cfc-4675-47d5-805b-82f2288c38ae"><img src="https://github.com/user-attachments/assets/85f93cfc-4675-47d5-805b-82f2288c38ae" alt="Image" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/85f93cfc-4675-47d5-805b-82f2288c38ae"><img src="https://github.com/user-attachments/assets/85f93cfc-4675-47d5-805b-82f2288c38ae" alt="Image" style="max-width: 100%;"></a></p>
 <h2>Step 2</h2>
 <p>打开开发者工具，在控制台输入let data = []，创建一个空数组</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/078ac491-8571-465f-a17e-84c787f4d7de"><img src="https://github.com/user-attachments/assets/078ac491-8571-465f-a17e-84c787f4d7de" alt="Image" style="max-width: 100%; height: auto;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/24d118f9-56de-421e-83e7-972bf982d3e2"><img src="https://github.com/user-attachments/assets/24d118f9-56de-421e-83e7-972bf982d3e2" alt="Image" style="max-width: 100%; height: auto;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/e3fd79ea-d546-4ae3-872c-b10f5b80b8ed"><img src="https://github.com/user-attachments/assets/e3fd79ea-d546-4ae3-872c-b10f5b80b8ed" alt="Image" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/078ac491-8571-465f-a17e-84c787f4d7de"><img src="https://github.com/user-attachments/assets/078ac491-8571-465f-a17e-84c787f4d7de" alt="Image" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/24d118f9-56de-421e-83e7-972bf982d3e2"><img src="https://github.com/user-attachments/assets/24d118f9-56de-421e-83e7-972bf982d3e2" alt="Image" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/e3fd79ea-d546-4ae3-872c-b10f5b80b8ed"><img src="https://github.com/user-attachments/assets/e3fd79ea-d546-4ae3-872c-b10f5b80b8ed" alt="Image" style="max-width: 100%;"></a></p>
 <h2>Step 3</h2>
 <p>输入代码</p>
 <p><code class="notranslate">data = data.concat(Array.from(new Set(Array.from(document.querySelectorAll('a')).map(el =&gt; el.href).filter(url =&gt; url.includes('www.bilibili.com/video')))))</code></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/f16f52b8-8150-40f6-ab77-d62c6ecaba1f"><img src="https://github.com/user-attachments/assets/f16f52b8-8150-40f6-ab77-d62c6ecaba1f" alt="Image" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/f16f52b8-8150-40f6-ab77-d62c6ecaba1f"><img src="https://github.com/user-attachments/assets/f16f52b8-8150-40f6-ab77-d62c6ecaba1f" alt="Image" style="max-width: 100%;"></a></p>
 <h2>Step 4</h2>
 <p>手动点击“下一页”后，再运行一次上述代码。<br>
 每一页都运行一次上述代码。</p>
 <h2>Step 5</h2>
 <p>输入代码data.join(' ')，格式化收集到的链接，复制。</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/fd33a66e-2f63-489e-a17b-a6400d1c5bd6"><img src="https://github.com/user-attachments/assets/fd33a66e-2f63-489e-a17b-a6400d1c5bd6" alt="Image" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/fd33a66e-2f63-489e-a17b-a6400d1c5bd6"><img src="https://github.com/user-attachments/assets/fd33a66e-2f63-489e-a17b-a6400d1c5bd6" alt="Image" style="max-width: 100%;"></a></p>
 <h2>Step 6</h2>
 <p>用python + yt-dlp进行逐个下载。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
