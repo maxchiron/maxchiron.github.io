@@ -29,7 +29,7 @@ https://github.com/fatedier/frp/releases
 <meta property="og:url" content="https://maxchiron.github.io/post/15.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/85681332">
 <title>配置frp内网穿透</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -53,7 +53,17 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     body {padding: 8px;}
     .postTitle{font-size:24px;}
 }
-
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
 </style>
 
 
@@ -91,7 +101,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <blockquote>
 <p>即便ufw未启用，iptables和nft仍有可能进行了拦截。所以先得配置iptables和nft的放行规则。</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo nft add rule ip filter INPUT tcp dport 7000 accept
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo nft add rule ip filter INPUT tcp dport 7000 accept
 sudo nft add rule ip filter INPUT tcp dport 6000 accept
 sudo nft add rule ip filter INPUT tcp dport 6001 accept
 
@@ -99,30 +109,27 @@ sudo iptables -A INPUT -p tcp --dport 7000 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 6000 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 6001 -j ACCEPT
 
-sudo iptables-save | sudo tee /etc/iptables/rules.v4
-</code></pre>
+sudo iptables-save <span class="pl-k">|</span> sudo tee /etc/iptables/rules.v4</pre></div>
 <h2>配置服务端（中转服务器）</h2>
 <ol>
 <li>修改frps.toml文件</li>
 </ol>
-<pre lang="toml" class="notranslate"><code class="notranslate">bindPort = 7000
-auth.method = "token"
-auth.token = "&lt;secret_token&gt;"
-</code></pre>
+<div class="highlight highlight-source-toml"><pre class="notranslate"><span class="pl-smi">bindPort</span> = <span class="pl-c1">7000</span>
+<span class="pl-smi">auth.method</span> = <span class="pl-s"><span class="pl-pds">"</span>token<span class="pl-pds">"</span></span>
+<span class="pl-smi">auth.token</span> = <span class="pl-s"><span class="pl-pds">"</span>&lt;secret_token&gt;<span class="pl-pds">"</span></span></pre></div>
 <ol start="2">
 <li>启动并开机自启frps</li>
 </ol>
-<pre lang="bash" class="notranslate"><code class="notranslate">chmod -R 777 /&lt;frp文件夹&gt;
+<div class="highlight highlight-source-shell"><pre class="notranslate">chmod -R 777 /<span class="pl-k">&lt;</span>frp文件夹<span class="pl-k">&gt;</span>
 
-cd /etc/systemd/system/
-vim frps.service
-</code></pre>
+<span class="pl-c1">cd</span> /etc/systemd/system/
+vim frps.service</pre></div>
 <p>将下面内容写入到frps.service</p>
-<pre lang="txt" class="notranslate"><code class="notranslate">[Unit]
+<div class="highlight highlight-text-adblock"><pre class="notranslate">[<span class="pl-ii">Unit</span>]
 Description=Frp Server Service
 After=network.target
 
-[Service]
+[<span class="pl-ii">Service</span>]
 Type=simple
 User=&lt;user_name&gt;
 Restart=on-failure
@@ -131,43 +138,39 @@ ExecStart=/&lt;path_of_frp_dir&gt;/frps -c /&lt;path_of_frp_dir&gt;/frps.toml
 ExecReload=/&lt;path_of_frp_dir&gt;/frps -c /&lt;path_of_frp_dir&gt;/frps.toml
 LimitNOFILE=1048576
 
-[Install]
-WantedBy=multi-user.target
-</code></pre>
+[<span class="pl-ii">Install</span>]
+WantedBy=multi-user.target</pre></div>
 <p>开机自启：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo systemctl daemon-reload
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo systemctl daemon-reload
 sudo systemctl start frps.service
-sudo systemctl enable frps.service
-</code></pre>
+sudo systemctl <span class="pl-c1">enable</span> frps.service</pre></div>
 <h2>配置客户端</h2>
 <ol>
 <li>修改frpc.toml文件</li>
 </ol>
-<pre lang="toml" class="notranslate"><code class="notranslate">serverAddr = "&lt;中转服务器ip地址"
-serverPort = 7000
-auth.token = "&lt;secret_token&gt;"
+<div class="highlight highlight-source-toml"><pre class="notranslate"><span class="pl-smi">serverAddr</span> = <span class="pl-s"><span class="pl-pds">"</span>&lt;中转服务器ip地址<span class="pl-pds">"</span></span>
+<span class="pl-smi">serverPort</span> = <span class="pl-c1">7000</span>
+<span class="pl-smi">auth.token</span> = <span class="pl-s"><span class="pl-pds">"</span>&lt;secret_token&gt;<span class="pl-pds">"</span></span>
 
-[[proxies]]
-name = "ssh"
-type = "tcp"
-localIP = "127.0.0.1"
-localPort = 22
-remotePort = 6000
-</code></pre>
+[[<span class="pl-en">proxies</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>ssh<span class="pl-pds">"</span></span>
+<span class="pl-smi">type</span> = <span class="pl-s"><span class="pl-pds">"</span>tcp<span class="pl-pds">"</span></span>
+<span class="pl-smi">localIP</span> = <span class="pl-s"><span class="pl-pds">"</span>127.0.0.1<span class="pl-pds">"</span></span>
+<span class="pl-smi">localPort</span> = <span class="pl-c1">22</span>
+<span class="pl-smi">remotePort</span> = <span class="pl-c1">6000</span></pre></div>
 <ol start="2">
 <li>启动并开机自启frpc</li>
 </ol>
-<pre lang="bash" class="notranslate"><code class="notranslate">chmod -R 777 /&lt;frp文件夹&gt;
+<div class="highlight highlight-source-shell"><pre class="notranslate">chmod -R 777 /<span class="pl-k">&lt;</span>frp文件夹<span class="pl-k">&gt;</span>
 
-cd /etc/systemd/system/
-vim frpc.service
-</code></pre>
+<span class="pl-c1">cd</span> /etc/systemd/system/
+vim frpc.service</pre></div>
 <p>将下面内容写入到frpc.service</p>
-<pre lang="txt" class="notranslate"><code class="notranslate">[Unit]
+<div class="highlight highlight-text-adblock"><pre class="notranslate">[<span class="pl-ii">Unit</span>]
 Description=Frp Client Service
 After=network.target
 
-[Service]
+[<span class="pl-ii">Service</span>]
 Type=simple
 User=&lt;user_name&gt;
 Restart=on-failure
@@ -176,29 +179,26 @@ ExecStart=/&lt;path_of_frp_dir&gt;/frpc -c /&lt;path_of_frp_dir&gt;/frpc.toml
 ExecReload=/&lt;path_of_frp_dir&gt;/frpc -c /&lt;path_of_frp_dir&gt;/frpc.toml
 LimitNOFILE=1048576
 
-[Install]
-WantedBy=multi-user.target
-</code></pre>
+[<span class="pl-ii">Install</span>]
+WantedBy=multi-user.target</pre></div>
 <p>开机自启：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo systemctl daemon-reload
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo systemctl daemon-reload
 sudo systemctl start frps.service
-sudo systemctl enable frps.service
-</code></pre>
+sudo systemctl <span class="pl-c1">enable</span> frps.service</pre></div>
 <ol start="3">
 <li>配置另一台内网机器</li>
 </ol>
 <p>frpc.toml</p>
-<pre lang="toml" class="notranslate"><code class="notranslate">serverAddr = "&lt;中转服务器ip地址"
-serverPort = 7000
-auth.token = "&lt;secret_token&gt;"
+<div class="highlight highlight-source-toml"><pre class="notranslate"><span class="pl-smi">serverAddr</span> = <span class="pl-s"><span class="pl-pds">"</span>&lt;中转服务器ip地址<span class="pl-pds">"</span></span>
+<span class="pl-smi">serverPort</span> = <span class="pl-c1">7000</span>
+<span class="pl-smi">auth.token</span> = <span class="pl-s"><span class="pl-pds">"</span>&lt;secret_token&gt;<span class="pl-pds">"</span></span>
 
-[[proxies]]
-name = "ssh"
-type = "tcp"
-localIP = "127.0.0.1"
-localPort = 22
-remotePort = 6001  #注意此处与上一个内网机器的端口需不同。
-</code></pre>
+[[<span class="pl-en">proxies</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>ssh<span class="pl-pds">"</span></span>
+<span class="pl-smi">type</span> = <span class="pl-s"><span class="pl-pds">"</span>tcp<span class="pl-pds">"</span></span>
+<span class="pl-smi">localIP</span> = <span class="pl-s"><span class="pl-pds">"</span>127.0.0.1<span class="pl-pds">"</span></span>
+<span class="pl-smi">localPort</span> = <span class="pl-c1">22</span>
+<span class="pl-smi">remotePort</span> = <span class="pl-c1">6001</span>  <span class="pl-c"><span class="pl-c">#</span>注意此处与上一个内网机器的端口需不同。</span></pre></div>
 <ol start="4">
 <li>连接</li>
 </ol>
@@ -228,7 +228,7 @@ if("08/26/2024"!=""){
 </script></div>
 </body>
 <script>
-var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
 var utterancesLoad=0;
 
 let themeSettings={
@@ -301,7 +301,70 @@ function iFrameLoading(){
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
 
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
 
 </script>
 <script src='https://maxchiron.github.io/Gmeek-plugins/GmeekTOC.js'></script><script src='https://maxchiron.github.io/Gmeek-plugins/lightbox.js'></script>
